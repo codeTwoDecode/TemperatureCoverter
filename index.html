@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form id="tempCalc" onsubmit="calcTempFunc(); return false">
+        <label for="temp">Please enter the temprature you'd like to convert.</label>
+        <input type="number" id="temp" name="temp">
+
+        <select name="tempDiff" id="tempDiff">
+            <option value="cel">°Celsius</option>
+            <option value="fah">°Fahrenheit</option>
+        </select>
+        <br>
+
+        <input type="submit" name="temp" id="submit">
+        <br>
+
+        <span id="resultContainer"></span>
+    </form>
+
+
+
+    <script>
+
+
+        // -----1M-------temperature convertor function-------(by select option value method)---------
+        /* const calcTempFunc = () => {
+            const userTempVal = document.getElementById('temp').value
+            console.log("🚀 ~ calcTempFunc ~ userTempVal: ->>", userTempVal);
+
+
+            const tempDiff = document.getElementById("tempDiff");
+            console.dir(tempDiff);
+
+            const valueTemp = tempDiff.value;                       //select option value
+            console.log("🚀 ~ calcTempFunc ~ valueTemp: ->>", valueTemp);
+
+
+            // -------convert celsius to fahrenheit function-------
+            const celToFahFunction = (cel) => {
+                let fahValue = (cel * (9 / 5)) + 32;
+                fahValue = parseFloat(fahValue).toFixed(2);
+                return fahValue;
+            }
+
+            // -------convert celsius to fahrenheit function-------
+            const fahToCelFunction = (fah) => {
+                let celValue = (fah - 32) * (5 / 9);
+                celValue = parseFloat(celValue).toFixed(2);
+                return celValue;
+            }
+
+
+            let result;
+            if (valueTemp === "cel") {
+                result = celToFahFunction(userTempVal);
+                document.getElementById("resultContainer").innerText = `= ${result} °Fahrenheit`
+            } else {
+                result = fahToCelFunction(userTempVal);
+                document.getElementById("resultContainer").innerText = `= ${result} °Celsius`
+            }
+        } */
+
+
+
+
+
+        // ------2M-------temperature convertor function-------(by select option:- selectedIndex method)---------
+        const calcTempFunc = () => {
+            const userTempVal = document.getElementById('temp').value
+            console.log("🚀 ~ calcTempFunc ~ userTempVal: ->>", userTempVal);
+
+            const tempDiff = document.getElementById("tempDiff");
+            console.dir(tempDiff);
+
+            const valueTemp = tempDiff[tempDiff.selectedIndex].innerText;            // selectedIndex method
+            console.log("🚀 ~ calcTempFunc ~ valueTemp: ->>", valueTemp);
+
+            let result;
+            if (valueTemp === "°Celsius") {
+                result = celToFahFunction(userTempVal);
+                document.getElementById("resultContainer").innerText = `= ${result} °Fahrenheit`;
+            } else {
+                result = fahToCelFunction(userTempVal);
+                document.getElementById("resultContainer").innerText = `= ${result} °Celsius`;
+            }
+
+        }
+
+
+
+        // -------convert celsius to fahrenheit function-------
+        function celToFahFunction(cel) {
+            let fahValue = (cel * (9 / 5)) + 32;
+            fahValue = parseFloat(fahValue).toFixed(2);
+            return fahValue;
+        }
+
+
+        // -------convert celsius to fahrenheit function-------
+        function fahToCelFunction(fah) {
+            let celValue = (fah - 32) * (5 / 9);
+            celValue = parseFloat(celValue).toFixed(2);
+            return celValue;
+        }
+
+
+
+
+
+        /*
+            ========Select selectedIndex Property======== (see w3school)
+            Select the <option> element with index "2":
+
+            document.getElementById("mySelect").selectedIndex = "2";
+            Description
+            The selectedIndex property sets or returns the index of the selected option in a drop-down list.
+
+            The index starts at 0.
+
+            Note: If the drop-down list allows multiple selections it will only return the index of the first option selected.
+
+            Note: The value "-1" will deselect all options (if any).
+
+            Note: If no option is selected, the selectedIndex property will return -1.
+        */
+    </script>
+</body>
+
+</html>
